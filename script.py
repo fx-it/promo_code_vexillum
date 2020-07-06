@@ -456,7 +456,6 @@ def main_program_cycle():
                 cursor.execute(sql)
                 db_connection.commit()
 
-
         # публикация поста в вк
         message = f"{emoji_rupor} Доброго времени суток, уважаемые игроки!\n\n{emoji_molniya} " + \
             f"Промокод {'(ДЖЕКПОТ ' + '%s' % emoji_jackpot + ')' if is_jackpot else ''}: {gold.promo_code} ({gold.current_value} золотых монет)\n\n{emoji_voskl_znak} " + \
