@@ -95,7 +95,7 @@ CYCLE_GOLD_COUNT = 60
 Количество голды, которое будет разыграно за период времени
 """
 
-PROMOCODE_COUNT = 3
+PROMO_CODE_COUNT = 3
 """
 Количество розыгрышей в цикле розыгрышей
 """
@@ -135,7 +135,7 @@ JACKPOT_GOLD_COUNT = 30
 Количество голды-джекпота, которое добавляется к обычному выигрышу.
 """
 
-ALPHANUMERIC_PROMOCODE_LENGTH = 8
+ALPHANUMERIC_PROMO_CODE_LENGTH = 8
 """
 Длина букво-численного промокода
 """
@@ -149,10 +149,10 @@ PROMO_CODE_IMAGE_PATH = _THIS_SCRIPT_PARENT_PATH + '\promo_code.jpg'
 
 ENCODING = 'utf8'
 
-MIDDLE_GOLD_VALUE_FOR_A_RAFFLE = CYCLE_GOLD_COUNT//PROMOCODE_COUNT
+MIDDLE_GOLD_VALUE_FOR_A_RAFFLE = CYCLE_GOLD_COUNT//PROMO_CODE_COUNT
 """Среднее целое значение одного розыгрыша"""
 
-GOLD_MIX_COUNT = PROMOCODE_COUNT * 5
+GOLD_MIX_COUNT = PROMO_CODE_COUNT * 5
 """
 Сколько раз будут изменятся значения голдов попарно, чтобы
 добиться некоторого распределения значений.
@@ -296,7 +296,7 @@ class Gold(object):
 def generate_promo_code() -> str:
     """Генерирует и возвращает новый промокод"""
     alphanumerics = string.ascii_uppercase + string.digits
-    promo_code = [random.choice(alphanumerics) for _ in range(0, ALPHANUMERIC_PROMOCODE_LENGTH)]
+    promo_code = [random.choice(alphanumerics) for _ in range(0, ALPHANUMERIC_PROMO_CODE_LENGTH)]
     return ''.join(promo_code)
 
 def attach_promo_codes(golds_list: 'list of Gold') -> None:
@@ -323,7 +323,7 @@ def get_cycle_golds_for_raffle() -> list:
     в цикле розыгрышей. Притом, значения голдов в списке распределяются так,
     чтобы в розыгрышах было примерно разное количество голды.
     """
-    cycle_golds_for_raffle = [Gold() for _ in range(0, PROMOCODE_COUNT)]
+    cycle_golds_for_raffle = [Gold() for _ in range(0, PROMO_CODE_COUNT)]
     cycle_golds_for_raffle_last_idx = len(cycle_golds_for_raffle) - 1
 
     values_to_change = Gold.get_values_to_change()
@@ -401,7 +401,7 @@ def main_program_cycle():
             Используется для заполнения waiting_seconds_for_raffles
             """
 
-            for _ in range(0, PROMOCODE_COUNT):
+            for _ in range(0, PROMO_CODE_COUNT):
                 second_for_raffle = random.randrange(start=1, stop=CYCLE_SECONDS+1, step=1)
                 while second_for_raffle in seconds_for_raffle:
                     second_for_raffle = random.randrange(start=1, stop=CYCLE_SECONDS+1, step=1)
