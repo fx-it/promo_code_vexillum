@@ -10,7 +10,7 @@
     python -m venv venv
 3. Активировать venv
     windows: venv\ Scripts\ activate
-    linux: venv\ bin\ activate
+    linux: source venv\ bin\ activate
 4. Обновить pip
     python -m pip install --upgrade pip
 5. Установить зависимости
