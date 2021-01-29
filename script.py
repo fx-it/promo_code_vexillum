@@ -31,8 +31,6 @@
 10. Запустить скрипт
     python .\script.py
     Ну или повесить в какой-нибудь systemd
-
-https://vk.com/fixed1995 https://github.com/fx-it/
 """
 
 import pymysql.cursors
